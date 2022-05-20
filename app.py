@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from dotenv import load_dotenv
 
 from flask import Flask, jsonify
@@ -10,7 +11,7 @@ app.config['SECRET'] = os.environ.get('SECRET')
 
 @app.route('/', methods=['GET'])
 def hello_world():
-    return jsonify({"message": f"Hello from API server. Current version is: {os.environ.get('APP_VERSION')}"}), 200
+    return jsonify({"message": f"Hello from API server. Current version is: {os.environ.get('APP_VERSION')}", "now": datetime.now()}), 200
 
 
 if __name__ == '__main__':
